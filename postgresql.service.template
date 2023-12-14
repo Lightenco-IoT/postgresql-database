@@ -1,0 +1,15 @@
+[Unit]
+Description=PostgreSQL Database
+After=postgresql.service
+After=postgresql.service
+Requires=docker.service
+
+[Service]
+Type=simple
+Restart=always
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStart=bash /root/postgresql-database/launch.sh
+
+[Install]
+WantedBy=default.target
