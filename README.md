@@ -1,5 +1,5 @@
 # PostgresSQL
-Database environment used in Quini.
+Database environment.
 
 For more information in [PostgreSQL website](https://www.postgresql.org).
 
