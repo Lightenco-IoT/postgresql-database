@@ -45,3 +45,4 @@ docker run \
     --volume "${DATA_FOLDER}":/var/lib/postgresql/data \
     --network "${NETWORK_NAME}" \
     "${IMAGE_NAME}"
+
