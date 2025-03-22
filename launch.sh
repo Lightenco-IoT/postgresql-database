@@ -12,7 +12,7 @@ DB_PORT=${DB_PORT:-5432}
 DB_USER=${DB_USER:-"postgres"}
 DB_PASSWORD=${DB_PASSWORD:-"postgres"}
 
-NETWORK_NAME=${DOCKER_NETWORK:-"docker0"}
+NETWORK_NAME=${DOCKER_NETWORK:-"bridge"}
 PROJECT_NAME=${PROJECT_NAME:-"default"}
 
 
@@ -25,7 +25,7 @@ fi
 
 
 # folder where to store the postgresql data
-DATA_FOLDER="$(pwd)/$(dirname "$0")/${PROJECT_NAME}_data"
+DATA_FOLDER="$(pwd)/$(dirname "$0")/data_${PROJECT_NAME}"
 
 # ensure the folder exists
 mkdir -p "${DATA_FOLDER}"
