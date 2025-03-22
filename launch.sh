@@ -12,7 +12,8 @@ DB_PORT=${DB_PORT:-5432}
 DB_USER=${DB_USER:-"postgres"}
 DB_PASSWORD=${DB_PASSWORD:-"postgres"}
 
-NETWORK_NAME=${DOCKER_NETWORK:-"my-network"}
+NETWORK_NAME=${DOCKER_NETWORK:-"docker0"}
+PROJECT_NAME=${PROJECT_NAME:-"default"}
 
 
 if docker network ls --format '{{.Name}}' | grep -wq "$NETWORK_NAME"; then
@@ -24,13 +25,13 @@ fi
 
 
 # folder where to store the postgresql data
-DATA_FOLDER="$(pwd)/$(dirname "$0")/data/"
+DATA_FOLDER="$(pwd)/$(dirname "$0")/${PROJECT_NAME}_data"
 
 # ensure the folder exists
 mkdir -p "${DATA_FOLDER}"
 
 # give a recognizable name to the container
-CONTAINER_NAME="${NETWORK_NAME}-postgresql-container"
+CONTAINER_NAME="${PROJECT_NAME}-postgresql-container"
 
 # get latest image
 docker pull "${IMAGE_NAME}"
